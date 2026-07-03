@@ -173,30 +173,24 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
             {/* Actions */}
             <div className="flex items-center gap-3 pt-4 border-t border-border">
-              <motion.a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 text-white text-sm font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-shadow"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                Demo
-              </motion.a>
-              <motion.a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-muted hover:bg-muted/80 text-foreground text-sm font-medium transition-colors"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FaGithub className="w-3.5 h-3.5" />
-                Code
-              </motion.a>
+             <motion.button
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(project.liveUrl, "_blank");
+  }}
+>
+  Demo
+</motion.button>
+             <motion.button
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(project.githubUrl, "_blank");
+  }}
+>
+  Code
+</motion.button>
             </div>
           </div>
         </div>
